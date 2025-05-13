@@ -17,16 +17,13 @@ nav:
 
   - User Onboarding:
     - Onboarding overview: onboarding/overview.md
-    - Obtaining an account: onboarding/getting_an_account.md
-    - Using SSH Keys: onboarding/ssh_keys.md
 
   - Getting work done:
-    - Command Line Interface:
-      - Selecting Hardware: getting-work-done/cli/selecting_hardware.md
-      - Running Batch Jobs: getting-work-done/cli/batch_jobs.md
-      - Running Interactive Jobs: getting-work-done/cli/interactive_jobs.md
-      - Software : getting-work-done/cli/software.md
-      - Jupyter Notebooks: getting-work-done/cli/jupyter-notebooks.md
+    - Selecting Hardware: getting-work-done/cli/selecting_hardware.md
+    - Running Batch Jobs: getting-work-done/cli/batch_jobs.md
+    - Running Interactive Jobs: getting-work-done/cli/interactive_jobs.md
+    - Software : getting-work-done/cli/software.md
+    - Jupyter Notebooks: getting-work-done/cli/jupyter-notebooks.md
 
     - Web interface: getting-work-done/webinterface/overview.md
       # - File Manager: getting-work-done/webinterface/filemanager.md

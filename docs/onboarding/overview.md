@@ -2,11 +2,12 @@
 
 Getting on to the Galapagos cluster follows the following steps
 
-* [Purchase a subscription](https://www.fluidnumerics.com/shop/p/rcc-allocation-monthly-subscription)
-* Fluid Numerics creates a `fluidnumerics.com` for your account and sends you a welcome message
-* You set the account's password and (optionally) add ssh keys to the account
-* Fluid Numerics adds you to the `galapagos-support` Slack channel and grants you an allocation on the cluster
-* You verify that you can log in
+* Purchase a subscription (Coming Soon! We can't wait to get you an account on Galapagos!)
+* Fluid Numerics creates your `fluidnumerics.com` account and provisions an allocation for you on the cluster
+* You set the account's password and two factor authentication details
+* Fluid Numerics adds you to the `galapagos-support` Slack channel
+* We get you added to our tailnet and you [set up tailscale](https://tailscale.com/kb/1347/installation) on your local worksation with your new fluidnumerics.com account.
+* Happy computing!
 
 !!! note
-    If you would like to purchase multiple user seats, have a managed service agreement, or obtain steep discounts for annual commits, [**contact us today**](mailto:support@fluidnumerics.com)
+    Would you prefer your own secure private bare-metal, cloud-native, or cloud-hybrid Slurm cluster? We do that too. [**Contact us today**](mailto:support@fluidnumerics.com)
