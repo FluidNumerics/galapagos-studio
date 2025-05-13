@@ -40,10 +40,6 @@ nav:
     - Working with MI300A: gpu/working_with_mi300a.md
   #- Tutorials:
 
-  - Admin:
-    - Admin overview: admin/overview.md
-    - How to Set Compute Partition: admin/mi300-change-compute-partition.md
-
   - Contact Support: contact-us.md
 
 
