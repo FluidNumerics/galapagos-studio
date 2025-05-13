@@ -1,0 +1,836 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+        <meta name="author" content="Fluid Numerics">
+      
+      
+      
+        <link rel="prev" href="../architecture_codes/">
+      
+      
+        <link rel="next" href="../../contact-us/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.4.6">
+    
+    
+      
+        <title>Working with MI300A - Fluid Numerics Galapagos</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.35e1ed30.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.356b1318.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="cyan">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#working-with-the-mi300a-system" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Fluid Numerics Galapagos" class="md-header__button md-logo" aria-label="Fluid Numerics Galapagos" data-md-component="logo">
+      
+  <img src="../../assets/images/logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Fluid Numerics Galapagos
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Working with MI300A
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="cyan"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_2" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12c0-2.42-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="black" data-md-color-accent="cyan"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_2">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/fluidnumerics/galapagos" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub/fluidnumerics/galapagos
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Fluid Numerics Galapagos" class="md-nav__button md-logo" aria-label="Fluid Numerics Galapagos" data-md-component="logo">
+      
+  <img src="../../assets/images/logo.png" alt="logo">
+
+    </a>
+    Fluid Numerics Galapagos
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/fluidnumerics/galapagos" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub/fluidnumerics/galapagos
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../available-resources/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Available Hardware & Software
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    User Onboarding
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            User Onboarding
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../onboarding/overview/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Onboarding overview
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Getting work done
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Getting work done
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../getting-work-done/cli/selecting_hardware/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Selecting Hardware
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../getting-work-done/cli/batch_jobs/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Running Batch Jobs
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../getting-work-done/cli/interactive_jobs/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Running Interactive Jobs
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../getting-work-done/cli/software/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Software
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../getting-work-done/cli/jupyter-notebooks/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Jupyter Notebooks
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../getting-work-done/webinterface/overview/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Web interface
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    GPU Programming
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            GPU Programming
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../architecture_codes/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Targeting GPU Architectures
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Working with MI300A
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Working with MI300A
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#mi300a-architecture-details" class="md-nav__link">
+    MI300A Architecture Details
+  </a>
+  
+    <nav class="md-nav" aria-label="MI300A Architecture Details">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cdna3-accelerator-complex-die-xcd" class="md-nav__link">
+    CDNA3 Accelerator Complex Die (XCD)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#amd-cdna-3-memory-hierarchy" class="md-nav__link">
+    AMD CDNA 3 Memory Hierarchy
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#limiting-the-maximum-and-single-memory-allocations-on-the-gpu" class="md-nav__link">
+    Limiting the maximum and single memory allocations on the GPU
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#using-mpi-bind" class="md-nav__link">
+    Using MPI Bind
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../contact-us/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Contact Support
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#mi300a-architecture-details" class="md-nav__link">
+    MI300A Architecture Details
+  </a>
+  
+    <nav class="md-nav" aria-label="MI300A Architecture Details">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cdna3-accelerator-complex-die-xcd" class="md-nav__link">
+    CDNA3 Accelerator Complex Die (XCD)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#amd-cdna-3-memory-hierarchy" class="md-nav__link">
+    AMD CDNA 3 Memory Hierarchy
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#limiting-the-maximum-and-single-memory-allocations-on-the-gpu" class="md-nav__link">
+    Limiting the maximum and single memory allocations on the GPU
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#using-mpi-bind" class="md-nav__link">
+    Using MPI Bind
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+<h1 id="working-with-the-mi300a-system">Working with the MI300A System</h1>
+<h2 id="mi300a-architecture-details">MI300A Architecture Details</h2>
+<p>This section describes the <a href="https://rocm.docs.amd.com/en/latest/conceptual/gpu-arch/mi300.html">MI300A architecture</a> and the <a href="https://www.supermicro.com/en/products/system/gpu/4u/as-4145gh-tnmr">Supermicro AS -4145GH-TNMR</a> configuration for Nicholson on the Galapagos cluster.</p>
+<h3 id="cdna3-accelerator-complex-die-xcd">CDNA3 Accelerator Complex Die (XCD)</h3>
+<p>The AMD Instinct MI300 series accelerators are based on the AMD CDNA 3 architecture, which introduced the Accelerator Complex Die (XCD), which contains the GPU computational elements of the processor along with the lower levels of the cache hierarchy.</p>
+<figure>
+  <img alt="Image title" src="../img/xcd-sys-arch.png" width="600" />
+  <figcaption>The structure of a single XCD in the AMD Instinct MI300 accelerator series.</figcaption>
+</figure>
+<p>On the XCD, four Asynchronous Compute Engines (ACEs) send compute shader workgroups to the Compute Units (CUs). The XCD has 40 CUs: 38 active CUs at the aggregate level and 2 disabled CUs for yield management. The CUs all share a 4 MB L2 cache that serves to coalesce all memory traffic for the die. </p>
+<figure>
+  <img alt="Image title" src="../img/mi300a-mi300x.png" width="600" />
+  <figcaption>MI300 series system architecture showing MI300A (left) with 6 XCDs and 3 CCDs, while the MI300X (right) has 8 XCDs.</figcaption>
+</figure>
+<p>On Nicholson, the Galapagos cluster's MI300A system, 4x MI300A APUs are connected via AMD Infinity Fabric (XGMI) interfaces. In our latest setup, <code>rocm-bandwidth-test</code> reports up to 182 GB/s transfer rate between APUs.</p>
+<figure>
+  <img alt="Image title" src="../img/mi300a-x4-topology.png" width="600" />
+  <figcaption>The 4xMI300A topology</figcaption>
+</figure>
+<h3 id="amd-cdna-3-memory-hierarchy">AMD CDNA 3 Memory Hierarchy</h3>
+<p>The AMD CDNA 3 architecture introduces significant advancements in the memory hierarchy, particularly beyond the Compute Units (CUs), with a complete redesign to optimize performance across heterogeneous chiplets. This new memory architecture enhances cache coherency for co-packaged CPU chiplets in APU products and efficiently leverages the chiplet-based design to improve throughput and scalability.</p>
+<p>At the core of this redesign is the shared L2 cache within each XCD (chiplet). The L2 is a 4MB, 16-way set associative cache, featuring 16 massively parallel channels, each 256KB in size. The L2 cache services requests from both lower-level instruction and data caches, ensuring efficient handling of memory traffic across the chiplet. On the read side, each channel can read a 128-byte cache line, with the L2 sustaining up to four concurrent requests from different CUs per cycle, resulting in a combined throughput of 2 KB per clock for each XCD.</p>
+<p>On the write side, the L2 cache’s 16 channels each support a 64-byte half-line write per clock cycle, with one fill request from the Infinity Fabric™ per clock. This is a key difference from the previous AMD CDNA 2 architecture, where each L2 cache had 32 channels but fewer overall instances. In AMD CDNA 3, there are up to eight L2 cache instances, delivering an aggregate read bandwidth of up to 34.4 TB/s across the system.</p>
+<p>The L2 cache is a writeback and write-allocate design, coalescing and reducing memory traffic that spills out to the AMD Infinity Cache™, minimizing unnecessary data transfers across the AMD Infinity Fabric™. The L2 cache is coherent within an XCD, while cache coherency across multiple XCDs is maintained by the Infinity Cache’s snoop filter, which efficiently resolves most inter-XCD coherent requests without disturbing the heavily utilized L2 caches.</p>
+<p>These enhancements to the memory hierarchy improve data locality and reduce latency, enabling AMD CDNA 3 GPUs to achieve higher sustained performance in HPC workloads. Refer to Figure 6 for a visual representation of the memory architecture.</p>
+<figure>
+  <img alt="Image title" src="../img/cdna3-memory-hierarchy.png" width="600" />
+  <figcaption></figcaption>
+</figure>
+<p><a href="https://rocm.docs.amd.com/en/latest/conceptual/gpu-arch/mi300.html"><strong>Read more about the MI300A architecture on the ROCm Documentation</strong></a></p>
+<h2 id="limiting-the-maximum-and-single-memory-allocations-on-the-gpu">Limiting the maximum and single memory allocations on the GPU</h2>
+<p>Many AI-related applications were originally developed on discrete GPUs. Some of these applications have fixed problem sizes associated with the targeted GPU size, and some attempt to determine the system memory limits by allocating chunks until failure. These techniques can cause issues in an APU with a shared space.</p>
+<p>To allow these applications to run on the APU without further changes, ROCm supports a default memory policy that restricts the percentage of the GPU that can be allocated. The following environment variables control this feature:</p>
+<ul>
+<li><code>GPU_MAX_ALLOC_PERCENT</code></li>
+<li><code>GPU_SINGLE_ALLOC_PERCENT</code></li>
+</ul>
+<p>These settings can be added to the default shell environment or the user environment. The effect of the memory allocation settings varies depending on the system, configuration, and task. They might require adjustment, especially when performing GPU benchmarks. Setting these values to 100 lets the GPU allocate any amount of free memory. However, the risk of encountering an operating system out-of-memory (OMM) condition increases when almost all the available memory is used.</p>
+<p>Before setting either of these items to 100 percent, carefully consider the expected CPU workload allocation and the anticipated OS usage. For instance, if the OS requires 8GB on a 128GB system, setting these variables to 100 authorizes a single workload to allocate up to 120GB of memory. Unless the system has swap space configured any over-allocation attempts will be handled by the OMM policies.
+<a href="https://rocm.docs.amd.com/en/latest/how-to/system-optimization/mi300a.html"><em>Source</em></a></p>
+<p>On the Galapagos cluster, the Slurm configuration uses <a href="https://slurm.schedmd.com/core_spec.html#system">specialized resources</a> to reserve 8GB of memory for the host operating system. Additionally, we set the <code>GPU_MAX_ALLOC_PERCENT</code> and <code>GPU_SINGLE_ALLOC_PERCENT</code> to <code>75</code> (75%) as a default. </p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>We have not yet tested the impact of varying this setting under various workload conditions.</p>
+</div>
+<h2 id="using-mpi-bind">Using MPI Bind</h2>
+<p><em>Coming soon</em></p>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.f886a092.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.aecac24b.min.js"></script>
+      
+    
+  </body>
+</html>

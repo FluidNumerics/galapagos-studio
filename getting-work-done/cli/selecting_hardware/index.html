@@ -1,0 +1,958 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+        <meta name="author" content="Fluid Numerics">
+      
+      
+      
+        <link rel="prev" href="../../../onboarding/overview/">
+      
+      
+        <link rel="next" href="../batch_jobs/">
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.4.6">
+    
+    
+      
+        <title>Selecting Hardware - Fluid Numerics Galapagos</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.35e1ed30.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.356b1318.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="cyan">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#selecting-hardware" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="Fluid Numerics Galapagos" class="md-header__button md-logo" aria-label="Fluid Numerics Galapagos" data-md-component="logo">
+      
+  <img src="../../../assets/images/logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Fluid Numerics Galapagos
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Selecting Hardware
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="cyan"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_2" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12c0-2.42-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="black" data-md-color-accent="cyan"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_2">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/fluidnumerics/galapagos" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub/fluidnumerics/galapagos
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Fluid Numerics Galapagos" class="md-nav__button md-logo" aria-label="Fluid Numerics Galapagos" data-md-component="logo">
+      
+  <img src="../../../assets/images/logo.png" alt="logo">
+
+    </a>
+    Fluid Numerics Galapagos
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/fluidnumerics/galapagos" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub/fluidnumerics/galapagos
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../available-resources/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Available Hardware & Software
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    User Onboarding
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            User Onboarding
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../onboarding/overview/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Onboarding overview
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Getting work done
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Getting work done
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Selecting Hardware
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Selecting Hardware
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#node-features-constraints" class="md-nav__link">
+    Node Features &amp; Constraints
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#generic-resources" class="md-nav__link">
+    Generic resources
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#getting-an-exclusive-interactive-node-allocation" class="md-nav__link">
+    Getting an exclusive interactive node allocation
+  </a>
+  
+    <nav class="md-nav" aria-label="Getting an exclusive interactive node allocation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#oram-v100" class="md-nav__link">
+    Oram (V100)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#noether-mi210" class="md-nav__link">
+    Noether (MI210)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nicholson-mi300a" class="md-nav__link">
+    Nicholson (MI300A)
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#examples" class="md-nav__link">
+    Examples
+  </a>
+  
+    <nav class="md-nav" aria-label="Examples">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#selecting-mi210-gpus-with-constraints" class="md-nav__link">
+    Selecting MI210 GPUs with constraints
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#selecting-mi210-gpus-with-gres" class="md-nav__link">
+    Selecting MI210 GPUs with GRES
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#further-reading" class="md-nav__link">
+    Further Reading
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../batch_jobs/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Running Batch Jobs
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interactive_jobs/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Running Interactive Jobs
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../software/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Software
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../jupyter-notebooks/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Jupyter Notebooks
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../webinterface/overview/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Web interface
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    GPU Programming
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            GPU Programming
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../gpu/architecture_codes/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Targeting GPU Architectures
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../gpu/working_with_mi300a/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Working with MI300A
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../contact-us/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Contact Support
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#node-features-constraints" class="md-nav__link">
+    Node Features &amp; Constraints
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#generic-resources" class="md-nav__link">
+    Generic resources
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#getting-an-exclusive-interactive-node-allocation" class="md-nav__link">
+    Getting an exclusive interactive node allocation
+  </a>
+  
+    <nav class="md-nav" aria-label="Getting an exclusive interactive node allocation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#oram-v100" class="md-nav__link">
+    Oram (V100)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#noether-mi210" class="md-nav__link">
+    Noether (MI210)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nicholson-mi300a" class="md-nav__link">
+    Nicholson (MI300A)
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#examples" class="md-nav__link">
+    Examples
+  </a>
+  
+    <nav class="md-nav" aria-label="Examples">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#selecting-mi210-gpus-with-constraints" class="md-nav__link">
+    Selecting MI210 GPUs with constraints
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#selecting-mi210-gpus-with-gres" class="md-nav__link">
+    Selecting MI210 GPUs with GRES
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#further-reading" class="md-nav__link">
+    Further Reading
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+<h1 id="selecting-hardware">Selecting Hardware</h1>
+<h2 id="node-features-constraints">Node Features &amp; Constraints</h2>
+<p>On Fluid Numerics systems you can use <a href="https://slurm.schedmd.com/sbatch.html#OPT_constraint">Slurm constraints</a> to select the compute node to run on by the features available.</p>
+<p>You can view the available features for each partition using the <code>sinfo</code> with appropriate <code>--format</code> options. We recommend using the following :</p>
+<pre><code>sinfo --format=&quot;%10P %5c %10m %f&quot;
+</code></pre>
+<p>The format statement provided to <code>sinfo</code> in the above example has the following meaning</p>
+<ul>
+<li><code>%10P</code> - Lists the name of the partition using at most 10 characters</li>
+<li><code>%5c</code>  - Lists the number of CPUs per node using at most 5 characters</li>
+<li><code>%10m</code> - Lists the amount of memory per node (in MB) using at most 10 characters</li>
+<li><code>%f</code>   - Lists the available features</li>
+</ul>
+<p>See <a href="https://slurm.schedmd.com/sinfo.html#OPT_format"><code>sinfo</code> format documentation</a> for more details.</p>
+<p>An example listing is shown below</p>
+<pre><code>$ sinfo --format=&quot;%20N %5c %10m  %f&quot;
+
+NODELIST         CPUS  MEMORY     AVAIL_FEATURES
+oram             24    54630       epyc,v100,hpc
+nicholson        192   513791      epyc,mi300a,hpc
+noether          64    240000      epyc,mi210,hpc
+</code></pre>
+<h2 id="generic-resources">Generic resources</h2>
+<p>On Fluid Numerics systems, we use <a href="https://slurm.schedmd.com/gres.html">Generic Resources (GRES)</a> to define the GPU type and quantity available on each compute node. By specifying the GRES via the <code>--gres</code> flag, you can define the gpu type and count (per node) that you want to have access to in your job.</p>
+<p>You can view the available features for each partition using the <code>sinfo</code> with appropriate <code>--format</code> options. We recommend using the following :</p>
+<pre><code>sinfo --format=%20N %10c %10m %20G&quot;
+</code></pre>
+<p>The format statement provided to <code>sinfo</code> in the above example has the following meaning</p>
+<ul>
+<li><code>%20N</code> - Node hostname (up to 20 characters)</li>
+<li><code>%10c</code> - Number of CPUs</li>
+<li><code>%10m</code> - Memory in MB</li>
+<li><code>%20G</code> - GRES (Generic Resources)</li>
+</ul>
+<p>An example listing is shown below</p>
+<pre><code> sinfo --format=&quot;%20N %10c %10m %20G&quot;
+NODELIST             CPUS       MEMORY     GRES                
+oram                 24         54630      gpu:v100:4          
+nicholson            192        513791     gpu:mi300a:4        
+noether              64         240000     gpu:mi210:4     
+</code></pre>
+<p>Keep in mind that on each server, some memory is set aside for the operating system</p>
+<h2 id="getting-an-exclusive-interactive-node-allocation">Getting an exclusive interactive node allocation</h2>
+<p>A common workflow on the Galapagos cluster is to have a completely interactive session on a compute node with access to all CPUs, GPUs, and available memory. This section provides you a quick one-line <code>salloc</code> call that will grant you such an allocation (when resources are available), for each of our systems.</p>
+<h3 id="oram-v100">Oram (V100)</h3>
+<p>For a single process/task on the compute node</p>
+<pre><code>salloc --time=1:00:00 -N1 -c24 --mem=45G --gres=gpu:v100:4 --exclusive
+</code></pre>
+<p>For one task per GPU</p>
+<pre><code>salloc --time=1:00:00 -N1 -n4 -c6 --mem=45G --gres=gpu:v100:4 --exclusive
+</code></pre>
+<h3 id="noether-mi210">Noether (MI210)</h3>
+<p>For a single process/task on the compute node</p>
+<pre><code>salloc --time=1:00:00 -N1 -c64 --mem=226G --gres=gpu:mi210:4 --exclusive
+</code></pre>
+<p>For one task per GPU</p>
+<pre><code>salloc --time=1:00:00 -N1 -n4 -c16 --mem=226G --gres=gpu:mi210:4 --exclusive
+</code></pre>
+<h3 id="nicholson-mi300a">Nicholson (MI300A)</h3>
+<pre><code>salloc --time=1:00:00 -N1 -c192 --mem=493G --gres=gpu:mi300a:4 --exclusive
+</code></pre>
+<p>For one task per socket</p>
+<pre><code>salloc --time=1:00:00 -N1 -n4 -c48 --mem=493G --gres=gpu:mi300a:4 --exclusive
+</code></pre>
+<h2 id="examples">Examples</h2>
+<h3 id="selecting-mi210-gpus-with-constraints">Selecting MI210 GPUs with constraints</h3>
+<p>This example allocates a job on a compute node with 1 MI210 GPU using Slurm constraints</p>
+<pre><code>#!/bin/bash
+#SBATCH --partition=economy           
+#SBATCH --gpus-per-node=1              # Request one gpu per node
+#SBATCH --ntasks-per-node=1            # Indicate you are running one task per node
+#SBATCH --cpus-per-task=12             # Request 12 CPUs (6 cores) for your task
+#SBATCH --constraint=mi210
+</code></pre>
+<h3 id="selecting-mi210-gpus-with-gres">Selecting MI210 GPUs with GRES</h3>
+<p>This example allocates a job on a compute node with 1 MI210 GPU using GRES</p>
+<pre><code>#!/bin/bash
+#SBATCH --partition=economy           
+#SBATCH --gres=gpu:mi210:1             # Request one MI210 gpu per node
+#SBATCH --ntasks-per-node=1            # Indicate you are running one task per node
+#SBATCH --cpus-per-task=12             # Request 12 CPUs (6 cores) for your task
+</code></pre>
+<h2 id="further-reading">Further Reading</h2>
+<ul>
+<li><a href="https://slurm.schedmd.com/sbatch.html#OPT_constraint">Slurm sbatch <code>--constraint</code></a></li>
+<li><a href="https://slurm.schedmd.com/sbatch.html#OPT_prefer">Slurm sbatch <code>--prefer</code></a></li>
+</ul>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": [], "search": "../../../assets/javascripts/workers/search.f886a092.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.aecac24b.min.js"></script>
+      
+    
+  </body>
+</html>
